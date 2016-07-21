@@ -30,7 +30,7 @@ All you need:
 
 -   Android device with 5.0 version or above.
 
--   At least one iBKS Beacon.
+-   At least one iBKS Beacon with FW version “EDSTEID V5.2016.07.20.1” or above.
 
 
 <span id="_Toc456607171" class="anchor"><span id="_Toc456859051" class="anchor"></span></span>Let’s play
@@ -43,7 +43,7 @@ All you need:
 new Android Studio project and add the iBKS SDK to the build.gradle
 (Module:app) declaring the following dependency:
 
-``compile 'com.accent_systems.ibkslibrary:ibkslibrary:1.0.8'``
+``compile 'com.accent_systems.ibks-sdk:ibks-sdk:1.0.0'``
 
 The **minSdkVersion** of the app should be **21** or higher because
 there are some Bluetooth functions that don’t work for older Android SDK
@@ -96,7 +96,7 @@ steps:
 
 3. Create the **Credentials** for your APP:
 
--   **Android** **API key**
+-   **Android** **API key** for your package.
 
 -   **OAuth Client ID** for your package.
 
@@ -107,7 +107,15 @@ The users of your APP don’t need to create Credentials but they should
 also enable the **Proximity Beacon API** on their account.
 
 
-4. Get started with a sample project 
+4. Compile your project
+------------------------------------
+Now, you can use all the functions of iBKS-SDK and compile your project.
+
+We recommend to have a look at “iBKS SDK Sample Project” before start with your
+own to become familiar with the method calls to iBKS-SDK.
+
+
+5. Get started with a sample project 
 ------------------------------------
 
 From this github project, you will find the **“iBKS SDK
@@ -134,10 +142,10 @@ Bluetooth APP such as:
 
 -   Parse advertising data
 
-The **“iBKS SDK Sample Project”** App starts with a scan of bluetooth
-devices. When an item of the list is clicked, the app establishes the
-connection with the beacon that allows you to do any action. Follow the
-next steps to start playing:
+The **“iBKS SDK Sample Project”** App starts with a scan of Bluetooth devices. When
+an item of the list is clicked, the app establishes the connection with the beacon
+that allows you to do any of the tasks mentioned above. Follow the next steps to
+start playing:
 
 
 1. **Download the project**
@@ -147,6 +155,7 @@ next steps to start playing:
 3. **Compile the project**
 
 4. **Try the example on your mobile device**
+ 
 
 <span id="_Toc456607171" class="anchor"><span id="_Toc456859051" class="anchor"></span></span>
 ========================================================================================================
