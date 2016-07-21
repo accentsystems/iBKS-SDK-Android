@@ -43,7 +43,7 @@ All you need:
 new Android Studio project and add the iBKS SDK to the build.gradle
 (Module:app) declaring the following dependency:
 
-**compile 'com.accent_systems.ibkslibrary:ibkslibrary:1.0.8'**
+``compile 'com.accent_systems.ibkslibrary:ibkslibrary:1.0.8'``
 
 The **minSdkVersion** of the app should be **21** or higher because
 there are some Bluetooth functions that don’t work for older Android SDK
