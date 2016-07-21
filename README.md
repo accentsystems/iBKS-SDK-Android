@@ -1,3 +1,3 @@
-# iBKSLibrarySample
+# iBKS-SDK
 
-Sample app of the new iBeacon and Eddystone library (under development)
+Documentation and sample app of the new iBeacon and Eddystone Android SDK for iBKS developed by Accent Systems (under development)
