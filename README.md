@@ -60,6 +60,9 @@ If the Android version is 6.0 or higher it’s necessary to request
 location permission. To do this, it’s necessary to add permission in
 AndroidManifest.xml
 
+``<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />``                    
+``<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />``
+
 ### <span id="_Toc455470645" class="anchor"><span id="_Toc456607175" class="anchor"><span id="_Toc456859055" class="anchor"></span></span></span>Bluetooth
 
 In order To use Bluetooth in Android device, the first thing to do is
@@ -67,10 +70,16 @@ check if the device that runs the app has Bluetooth Low Energy (beacons
 work with this type of Bluetooth) and if it is enabled. To enable
 Bluetooth it’s necessary to add permission in AndroidManifest.xml
 
+``<uses-permission android:name="android.permission.BLUETOOTH" />``         
+``<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />``
+
+
 ### Internet
 
 In order to use some functions that request access to internet, it’s
 necessary to add permissions on AndroidManifest.xml
+
+``<uses-permission android:name="android.permission.INTERNET" />``
 
 
 3. EID registration 
