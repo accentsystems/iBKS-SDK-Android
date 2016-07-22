@@ -109,10 +109,9 @@ also enable the **Proximity Beacon API** on their account.
 
 4. Compile your project
 ------------------------------------
-Now, you can use all the functions of iBKS-SDK and compile your project.
+Now, compile your project and you are ready for playing with iBKS-SDK. 
 
-We recommend to have a look at “iBKS SDK Sample Project” before start with your
-own to become familiar with the method calls to iBKS-SDK.
+We recommend to have a look at “iBKS SDK Sample Project” before starting with your own project in order to get used to iBKS-SDK.
 
 
 5. Get started with a sample project 
@@ -159,4 +158,4 @@ start playing:
 
 <span id="_Toc456607171" class="anchor"><span id="_Toc456859051" class="anchor"></span></span>
 ========================================================================================================
-Last update: 2016/07/21
+Last update: 2016/07/22
