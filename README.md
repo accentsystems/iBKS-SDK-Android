@@ -30,7 +30,7 @@ All you need:
 
 -   Android device with 5.0 version or above.
 
--   At least one iBKS Beacon with FW version “EDSTEID V5.2016.07.20.1” or above.
+-   At least one iBKS Beacon with FW version “EDSTEID V5.2016.06.29.1” or above.
 
 
 <span id="_Toc456607171" class="anchor"><span id="_Toc456859051" class="anchor"></span></span>Let’s play
