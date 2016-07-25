@@ -130,7 +130,6 @@ public class MainActivity extends AppCompatActivity implements ASScannerCallback
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // User chose not to enable Bluetooth.
         if (requestCode == 1 && resultCode == Activity.RESULT_CANCELED) {
-            finish();
             return;
         }else{
             if (requestCode == REQUEST_CODE_PICK_ACCOUNT) {
@@ -148,7 +147,6 @@ public class MainActivity extends AppCompatActivity implements ASScannerCallback
                     }
 
                 }else{
-                    finish();
                 }
             }
         }
@@ -455,7 +453,7 @@ public class MainActivity extends AppCompatActivity implements ASScannerCallback
 
 
                 /*** Example to get EDST or iBeacon Slots ***/
-                ASEDSTService.setClient_ProjectId(client,getPrefs.getString("projectId", null));
+               // ASEDSTService.setClient_ProjectId(client,getPrefs.getString("projectId", null));
                 ASEDSTService.getEDSTSlots();
                 //ASiBeaconService.getiBeaconSlots();
                 /********************************************/
@@ -548,12 +546,14 @@ public class MainActivity extends AppCompatActivity implements ASScannerCallback
     public void onGetEDSTSlots(int result, ASEDSTSlot[] slots){
         if(result == ASUtils.READ_OK)
         {
+            /**** Reading EID In Clear (if there's a slot configured as EID) ****
             for(int i=0;i<slots.length;i++) {
                 if(slots[i].frame_type == ASEDSTDefs.FT_EDDYSTONE_EID) {
                     ASEDSTService.setClient_ProjectId(client, getPrefs.getString("projectId", null));
                     ASEDSTService.getEIDInClear(i);
                 }
             }
+            /********************************************************************/
             for(int i=0;i<slots.length;i++){
                 Log.i(TAG,"onGetEDSTSlots - slot "+i+" advint = "+ Integer.toString(slots[i].adv_int)+ " txpower = "+ slots[i].tx_power + " advtxpower = "+ slots[i].adv_tx_power +" frame type = 0x"+ Integer.toHexString(slots[i].frame_type)+" data = "+ slots[i].data );
             }
