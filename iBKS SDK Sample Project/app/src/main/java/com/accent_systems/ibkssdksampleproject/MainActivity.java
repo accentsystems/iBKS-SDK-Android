@@ -4,6 +4,7 @@ import android.Manifest;
 import android.accounts.AccountManager;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
@@ -75,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements ASScannerCallback
     SharedPreferences getPrefs;
     public static Activity actv;
 
+    static ProgressDialog connDialog;
     private static String TAG = "MainActivity";
 
     @Override
@@ -96,6 +98,9 @@ public class MainActivity extends AppCompatActivity implements ASScannerCallback
 
         //Set the adapter to the listview
         devicesList.setAdapter(adapter);
+
+        connDialog = new ProgressDialog(MainActivity.this);
+        connDialog.setTitle("Please wait...");
 
         //  checkBlePermissions();
         startScan();
@@ -246,7 +251,12 @@ public class MainActivity extends AppCompatActivity implements ASScannerCallback
                     new ASiBeaconService(mcondevice,MainActivity.this,10);
                     new ASGlobalService(mcondevice,MainActivity.this,10);
 
+                    //show dialog to notify the user that the app is working
+                    connDialog.setMessage("Showing info on Android Monitor!");
+                    connDialog.show();
+
                     ASConDevice.connectDevice(address);
+
                 } else{
                     Log.i(TAG,"BLE not enabled/supported!");
                 }
@@ -411,11 +421,15 @@ public class MainActivity extends AppCompatActivity implements ASScannerCallback
                 break;
             case ASUtils.GATT_DEV_DISCONNECTED:
                 Log.i(TAG,"onChangeStatusConnection - DEVICE DISCONNECTED: "+blgatt.getDevice().getName());
+                if (connDialog != null && connDialog.isShowing()) {
+                    connDialog.dismiss();
+                }
                 break;
             default:
                 Log.i(TAG,"onChangeStatusConnection - ERROR PARSING");
                 break;
         }
+
     }
 
     //implementation of ASConDeviceCallback
@@ -557,9 +571,15 @@ public class MainActivity extends AppCompatActivity implements ASScannerCallback
             for(int i=0;i<slots.length;i++){
                 Log.i(TAG,"onGetEDSTSlots - slot "+i+" advint = "+ Integer.toString(slots[i].adv_int)+ " txpower = "+ slots[i].tx_power + " advtxpower = "+ slots[i].adv_tx_power +" frame type = 0x"+ Integer.toHexString(slots[i].frame_type)+" data = "+ slots[i].data );
             }
+
         }
         else
             Log.i(TAG,"onGetEDSTSlots - Error (" + Integer.toString(result) + ")");
+
+        //Close dialog
+        if (connDialog != null && connDialog.isShowing()) {
+            connDialog.dismiss();
+        }
     }
     //implementation of ASEDSTCallback
     public void onGetEIDInClear(int result, String EID, String msg){
